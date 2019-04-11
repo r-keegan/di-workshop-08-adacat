@@ -68,6 +68,12 @@ class AdaCat {
       this.size = this.size + 1
     } //if their hunger level goes down, increase the size of AdaCat
 
+    if (this.isSleeping == true) {
+      var hunger = this.hunger
+      var message = "You are trying to feed a cat while they are napping"
+      this.setMessage(message)
+    }
+
     this.setHunger(hunger)
     this.setTiredness(tiredness)
     this.setMessage(message)

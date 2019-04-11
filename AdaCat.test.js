@@ -139,6 +139,21 @@ describe('AdaCat', function() {
       myCat.feed()
       expect(myCat.size).to.equal(31)
     })
+
+    it('displays message whilst sleeping', function() {
+      var myCat = new AdaCat('bottle', 'alex')
+      myCat.nap()
+      myCat.feed() 
+      expect(myCat.message).to.equal('You are trying to feed a cat while they are napping')
+    })
+
+    it('hunger remains the same whilst sleeping', function() {
+      var myCat = new AdaCat('bottle', 'bob')
+      myCat.hunger = 4
+      myCat.nap()
+      myCat.feed() 
+      expect(myCat.hunger).to.equal(4)
+    })
   })
 
   describe('#nap', function() {
