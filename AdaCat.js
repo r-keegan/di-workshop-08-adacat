@@ -125,6 +125,16 @@ class AdaCat {
       healthScore = 0
     }
 
+    if (healthScore <= 10) {
+      var message = 'Your cat is sick, take it to the vet'
+      this.setMessage(message)
+    }
+
+    if (healthScore == 0) {
+      var message = 'Your cat has died, you are a monster'
+      this.setMessage(message)
+    }
+
     return healthScore
   }
 }

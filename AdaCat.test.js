@@ -311,5 +311,21 @@ describe('AdaCat', function() {
       var result = myCat.getHealth()
       expect(result).to.equal(0)
     })
+
+    it('message healthScore is zero', function() {
+      var myCat = new AdaCat('bort', 'alex')
+      myCat.size = 1
+      myCat.hunger = 3
+      var result = myCat.getHealth()
+      expect(myCat.message).to.equal('Your cat has died, you are a monster')
+    })
+
+    it('message when healthScore less than 10', function() {
+      var myCat = new AdaCat('bort', 'alex')
+      myCat.size = 5
+      myCat.hunger = 3
+      var result = myCat.getHealth()
+      expect(myCat.message).to.equal('Your cat is sick, take it to the vet')
+    })
   })
 })
