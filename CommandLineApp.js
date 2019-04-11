@@ -4,7 +4,7 @@ var AdaCat = require('./AdaCat')
 class CommandLineApp {
   constructor() {
     this.cat = null
-  }
+  } 
 
   start() {
     this.setup()

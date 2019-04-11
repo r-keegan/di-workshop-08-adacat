@@ -34,6 +34,11 @@ describe('AdaCat', function() {
       var myCat = new AdaCat('toyota', 'alex')
       expect(myCat.size).to.equal(30)
     })
+
+    it('sets the tiredness attribute to 0', function() {
+      var myCat = new AdaCat('mittens', 'rebecca')
+      expect(myCat.tiredness).to.equal(0)
+    })
   })
 
   describe('#getDescription', function() {
@@ -88,6 +93,19 @@ describe('AdaCat', function() {
       expect(myCat.hunger).to.equal(4)
     })
 
+    it('increases the tiredness attribute by 1 from start of game', function() {
+      var myCat = new AdaCat('holly', 'merlin')
+      myCat.feed()
+      expect(myCat.tiredness).to.equal(1)
+    })
+
+    it('increases the tiredness attribute by 1', function() {
+      var myCat = new AdaCat('holly', 'merlin')
+      myCat.tiredness = 10
+      myCat.feed()
+      expect(myCat.tiredness).to.equal(11)
+    })
+
     it('does not decrease hunger below 0', function() {
       var myCat = new AdaCat('leggy', 'alex')
       myCat.hunger = 0
@@ -108,6 +126,13 @@ describe('AdaCat', function() {
       var myCat = new AdaCat('apple', 'alex')
       myCat.nap()
       expect(myCat.isSleeping).to.equal(true)
+    })
+
+    it('set tiredness attibute to 0', function() {
+      var myCat = new AdaCat('orange', 'bob')
+      myCat.tiredness = 9
+      myCat.nap()
+      expect(myCat.tiredness).to.equal(0)
     })
   })
 
@@ -139,6 +164,19 @@ describe('AdaCat', function() {
       myCat.hunger = 8
       myCat.play()
       expect(myCat.size).to.equal(29)
+    })
+
+    it('increases the tiredness attribute by 3', function() {
+      var myCat = new AdaCat('holly', 'merlin')
+      myCat.play()
+      expect(myCat.tiredness).to.equal(3)
+    })
+
+    it('will not increase tiredness by 15', function() {
+      var myCat = new AdaCat('holly', 'merlin')
+      myCat.tiredness = 14
+      myCat.play()
+      expect(myCat.tiredness).to.equal(15)
     })
   })
 

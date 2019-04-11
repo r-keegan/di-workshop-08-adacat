@@ -55,16 +55,19 @@ class AdaCat {
     //function which sets game parameters of feeding
     var hunger = this.hunger - 1
     //when fed hunger level goes down
+    var tiredness = this.tiredness + 1
 
     if (hunger < 3) {
       this.size = this.size + 1
     } //if their hunger level goes down, increase the size of AdaCat
 
     this.setHunger(hunger)
+    this.setTiredness(tiredness)
   }
 
   nap() {
     this.isSleeping = true
+    this.setTiredness(0);
   }
 
   wakeUp() {
@@ -74,10 +77,13 @@ class AdaCat {
   play() {
     var hunger = this.hunger + 3
     //if you play with the cat, their hunger level increases
+    var tiredness = this.tiredness + 3
+
     if (hunger > 7) {
       this.size = this.size - 1
     } //cat moves further away from ideal weight
     this.setHunger(hunger)
+    this.setTiredness(tiredness)
   } //updates the hunger of the AdaCat
 
   getHealth() {
