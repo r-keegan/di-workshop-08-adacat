@@ -39,6 +39,11 @@ describe('AdaCat', function() {
       var myCat = new AdaCat('mittens', 'rebecca')
       expect(myCat.tiredness).to.equal(0)
     })
+
+    it('sets the message attribute to an empty string', function() {
+      var myCat = new AdaCat('john wayne gacey', 'rebecca')
+      expect(myCat.message).to.equal("")
+    })
   })
 
   describe('#getDescription', function() {
@@ -90,6 +95,14 @@ describe('AdaCat', function() {
       var result = myCat.getDescription()
       var lines = result.split('\n')
       expect(lines[5]).to.equal('their tiredness level is 0/15')
+    })
+
+    it('includes what cat is doing in message', function() {
+      var myCat = new AdaCat('baby', 'facedkilled')
+      myCat.feed()
+      var result = myCat.getDescription()
+      var lines = result.split('\n')
+      expect(lines[6]).to.equal('Cat is feeding')
     })
   })
 

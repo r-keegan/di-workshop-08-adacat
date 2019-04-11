@@ -8,6 +8,7 @@ class AdaCat {
     this.isSleeping = false
     this.size = 30
     this.tiredness = 0
+    this.message = ""
   }
 
   setHunger(newHunger) {
@@ -31,6 +32,10 @@ class AdaCat {
     this.tiredness = newTiredness;
   }
 
+  setMessage(newMessage) {
+    this.message = newMessage
+  }
+
   getDescription() {
     //sets comments seen on index.js when playing the game
     var sleepLine
@@ -47,8 +52,8 @@ class AdaCat {
       'their health is ' + this.getHealth() + '/30.',
       sleepLine,
       'their tiredness level is ' + this.tiredness + '/15',
+      this.message
     ]
-
     return lines.join('\n')
   }
 
@@ -57,6 +62,7 @@ class AdaCat {
     var hunger = this.hunger - 1
     //when fed hunger level goes down
     var tiredness = this.tiredness + 1
+    var message = "Cat is feeding"
 
     if (hunger < 3) {
       this.size = this.size + 1
@@ -64,27 +70,32 @@ class AdaCat {
 
     this.setHunger(hunger)
     this.setTiredness(tiredness)
+    this.setMessage(message)
   }
 
   nap() {
     this.isSleeping = true
     this.setTiredness(0);
+    this.setMessage("Cat is sleeping")
   }
 
   wakeUp() {
     this.isSleeping = false
+    this.setMessage("Cat is awake now")
   }
 
   play() {
     var hunger = this.hunger + 3
     //if you play with the cat, their hunger level increases
     var tiredness = this.tiredness + 3
+    var message = "Cat is playing"
 
     if (hunger > 7) {
       this.size = this.size - 1
     } //cat moves further away from ideal weight
     this.setHunger(hunger)
     this.setTiredness(tiredness)
+    this.setMessage(message)
   } //updates the hunger of the AdaCat
 
   getHealth() {
