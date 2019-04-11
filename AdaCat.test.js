@@ -84,6 +84,13 @@ describe('AdaCat', function() {
       var lines = result.split('\n')
       expect(lines[3]).to.equal('their health is 25/30.')
     })
+
+    it('includes the cat tiredness level', function() {
+      var myCat = new AdaCat('danger', 'spock')
+      var result = myCat.getDescription()
+      var lines = result.split('\n')
+      expect(lines[5]).to.equal('their tiredness level is 0/15')
+    })
   })
 
   describe('#feed', function() {

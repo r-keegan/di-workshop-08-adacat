@@ -45,7 +45,8 @@ class AdaCat {
 
       'they weigh ' + this.size + ' tonnes.',
       'their health is ' + this.getHealth() + '/30.',
-      sleepLine
+      sleepLine,
+      'their tiredness level is ' + this.tiredness + '/15',
     ]
 
     return lines.join('\n')
