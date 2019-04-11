@@ -1,13 +1,17 @@
+
 class AdaCat {
+  //sets starting parameters of AdaCat
   constructor(name, owner) {
     this.name = name
     this.owner = owner
     this.hunger = 5
     this.isSleeping = false
     this.size = 30
+    this.tiredness = 0
   }
 
   setHunger(newHunger) {
+    //sets limits of hunger level
     if (newHunger < 0) {
       newHunger = 0
     }
@@ -17,7 +21,18 @@ class AdaCat {
     this.hunger = newHunger
   }
 
+  setTiredness(newTiredness) {
+    if (newTiredness < 0) {
+      newTiredness = 0;
+    } 
+    if (newTiredness > 15) {
+      newTiredness = 15;
+    }
+    this.tiredness = newTiredness;
+  }
+
   getDescription() {
+    //sets comments seen on index.js when playing the game
     var sleepLine
     if (this.isSleeping) {
       sleepLine = 'Shh! ' + this.name + ' is sleeping.'
@@ -37,11 +52,13 @@ class AdaCat {
   }
 
   feed() {
+    //function which sets game parameters of feeding
     var hunger = this.hunger - 1
+    //when fed hunger level goes down
 
     if (hunger < 3) {
       this.size = this.size + 1
-    }
+    } //if their hunger level goes down, increase the size of AdaCat
 
     this.setHunger(hunger)
   }
@@ -56,11 +73,12 @@ class AdaCat {
 
   play() {
     var hunger = this.hunger + 3
+    //if you play with the cat, their hunger level increases
     if (hunger > 7) {
       this.size = this.size - 1
-    }
+    } //cat moves further away from ideal weight
     this.setHunger(hunger)
-  }
+  } //updates the hunger of the AdaCat
 
   getHealth() {
     // the ideal weight for cats is 30
